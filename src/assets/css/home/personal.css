@@ -1,0 +1,104 @@
+.header-div{background: url("../../img/header.png");background-size: 100% 100%}
+.header-modules{width: 100%;height:6.7rem;background: url("../../img/personal/fsbg_grzx_bg@2x.png");background-size: 100% 100%;position: relative;}
+.header-top{height: 1rem;padding: 0 .33rem;margin-top: .88rem;margin-bottom: .52rem}
+.header-top .header-photo{width: 1.08rem;height: 1.08rem;border-radius: 50%;float: left}
+.header-top .sign{float: right;margin-right: -.32rem;position: relative;margin-top: .34rem;}
+.header-top .sign p{display: inline-block}
+.header-top .sign p:nth-child(1){padding-top:.08rem;position:absolute;top:-.1rem;left:-.56rem;height: .7rem;width: .7rem;border-radius: 50%;background: linear-gradient(#FFF6E0,#FFF0CA);text-align: center;line-height: .7rem;margin-right: -.2rem;}
+.header-top .sign p:nth-child(2){height: .5rem;background: linear-gradient(#FFF6E0,#FFF0CA);line-height: .5rem;padding: 0 .16rem;color: #F52839;font-size: .22rem;}
+.header-message{float: left;margin-left: .34rem;margin-top: .38rem;}
+.header-message p{display: inline-block;font-size: .4rem;font-weight: bold;color: white;margin-bottom: .1rem;}
+.header-message span{width: 1.2rem;height: .32rem;line-height: .32rem;text-align: center;background-color: white;
+border-radius: 16px;color: black;font-size: .24rem;display: inline-block}
+.header-message .progress{border: 2px solid white;border-radius: .2rem;position: relative;}
+.header-modules a{margin-right: .24rem}
+.header-modules .header{height:.52rem;}
+.header-modules .header div{float:right;margin-top:.5rem;}
+.progress span{display: inline;background: none;position: absolute;top: 0;right: -.08rem;bottom: 0;margin: auto;z-index: 1;color: #ff3395}
+.header-code{width: .45rem;height: .45rem;float: right;margin-top: .2rem}
+.header-bottom{}
+.header-bottom li{width: calc(100% / 4);float: left;text-align: center;color: white;position: relative}
+.header-bottom li p:nth-child(1){font-size: .3rem}
+.header-bottom li p:nth-child(2){font-size: .26rem}
+/* .header-bottom li+li:after{width: 1px;height: .22rem;background-color: white;position: absolute;left: 0;top: .3rem;content: ""} */
+.menu-modules{position: absolute;top: 3.9rem;border-bottom:none;}
+.menu-modules ul{width: 6.8rem;}
+.menu-modules li{float: left;text-align: center;width: calc(100% / 5);}
+.menu-modules li i{display: block;}
+.menu-modules li img{width: .7rem;height: .7rem;display: block;margin: auto;}
+.menu-modules li p{text-align: left;margin-top: .12rem;margin-bottom: .4rem;color: #666666;font-size: .26rem}
+.menu-modules-bottom{margin-bottom: 0}
+.banner-modules{width: 7.02rem;display: block;margin: auto;
+  background-size: 100% 100%;margin-top: .7rem}
+.integral-modules{}
+.integral-modules>p{font-size: .34rem;font-weight: bold;color: #333}
+.integral-modules .numdata li p:nth-child(2){font-size: .44rem;font-weight: 400;color: #484F78;font-weight: Medium;}
+.integral-modules .numdata li p:nth-child(1){margin-top: .32rem;margin-bottom: .1rem;font-size: .26rem;color: #484F78;}
+.integral-modules .numdata li:nth-child(1){float: left;}
+.integral-modules .numdata li:nth-child(2){float: right;margin-right: 1rem}
+.integral-modules .numdata span{font-size: .3rem;}
+.integral-modules .invite{clear: both;width: 6.8rem;}
+.integral-modules .invite li{float: left;width:calc(100% / 4);margin-top:0.32rem;text-align: center;color: #666666;}
+.integral-modules .invite li:nth-child(1){margin-left: -.4rem;}
+.integral-modules .clear{clear: both;}
+.integral-modules .nav{width: 6.8rem;;}
+.member{clear: both;}
+.member li{color:#666666;float: left;width:calc(100% / 4);text-align: center;margin-top: 0.34rem;}
+.member li:nth-child(1){margin-left: -.4rem}
+.home-title{font-size: .34rem;color: #333333;font-weight: bold;}
+.home-bottom{margin-bottom: .32rem}
+.serve-modules{width: 6.8rem;margin-bottom:-.2rem;}
+.serve-modules li{float: left;width: calc(100% / 4);text-align: center;margin-top: .4rem;position: relative;height: 1.2rem;color: #666666;}
+.serve-modules li:nth-child(1){margin-left: -.4rem;}
+.serve-modules li img{display: block;margin: auto;position: absolute;left: 0;right: 0}
+.serve-modules li p{text-align: center;color: #666666;font-size: .24rem;position: absolute;width: 100%}
+.header-div a:nth-child(1){
+  /*background: url("../../img/home/message.png");background-size: 100% 100%;*/
+  width: .4rem;
+  display: block;height: .37rem;float: right;position: relative;margin-right: .4rem}
+.header-div a:nth-child(1).active:after{display: block;position: absolute;top: -.05rem;right: -.05rem;content: "";border-radius: 50%;width: .1rem;
+height: .1rem;background-color: #FC2C10}
+.header-div a{
+  /*background: url("../../img/home/set.png");background-size: 100% 100%;*/
+  width: .39rem;
+  display: block;height: .41rem;float: right;margin: 0 .2rem;margin-top: .15rem;}
+.frame{box-shadow: 0 0 10px #f3f3f3;width:7.02rem;border: 1px solid #f3f3f3;margin-left:.24rem;padding: .32rem .4rem;border-radius: 0.2rem;background: white;margin-top: .16rem;}
+.bbc-index{height: calc(100vh - 1.4rem);position: absolute;width: 100%;overflow-y: auto;top: .6rem;background-color: #f2f2f2}
+
+.icon { display:inline-block}
+.icon-message { width: .46rem; height: .46rem; background: url("../../img/personal/shezhi_grzx_icon@3x.png");background-size: 100% 100% }
+.icon-card { width: .51rem; height: .44rem; background: url("../../img/home/icon/card.png");background-size: 100% 100% }
+.icon-check { width: .46rem; height: .46rem; background: url("../../img/home/icon/check.png");background-size: 100% 100% }
+.icon-gift { width: .45rem; height: .46rem; background: url("../../img/home/icon/gift.png");background-size: 100% 100% }
+.icon-horn { width: .52rem; height: .46rem; background: url("../../img/home/icon/horn.png");background-size: 100% 100% }
+.icon-set { width: .46rem; height: .46rem; background: url("../../img/personal/xiaoxi_grzx_icon@3x.png");background-size: 100% 100% }
+.icon-customerservice { width: .54rem; height: .48rem; background: url("../../img/home/icon/customerservice.png");background-size: 100% 100% }
+.icon-bag { width: .37rem; height: .49rem; background: url("../../img/home/icon/bag.png");background-size: 100% 100% }
+.icon-time { width: .56rem; height: .52rem; background: url("../../img/home/icon/time.png");background-size: 100% 100% }
+.icon-shouhou { width: .6rem; height: .6rem; background: url("../../img/home/icon/shouhou.png");background-size: 100% 100% }
+.icon-register { width: .52rem; height: .55rem; background: url("../../img/home/icon/register.png");background-size: 100% 100% }
+.icon-order { width: .6rem; height: .6rem;background: url("../../img/personal/dingdan_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-question { width: .6rem; height: .6rem; background: url("../../img/home/icon/question.png");background-size: 100% 100% }
+.icon-after-sales { width: .6rem; height: .6rem; background: url("../../img/personal/yuyue_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-shop { width: .6rem; height: .6rem; background: url("../../img/home/icon/shop.png");background-size: 100% 100% }
+.icon-information { width: .6rem; height: .6rem; background: url("../../img/personal/shoucang_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-integral { width: .6rem; height: .6rem; background: url("../../img/home/icon/integral.png");background-size: 100% 100% }
+.icon-praise { width: .6rem; height: .6rem; background: url("../../img/personal/zanguo_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-answers { width: .6rem; height: .6rem; background: url("../../img/personal/wenda_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-footprint { width: .6rem; height: .6rem; background: url("../../img/personal/zuji_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-invite { width: .6rem; height: .6rem; background: url("../../img/personal/yaoqing_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-deserve { width: .6rem; height: .6rem; background: url("../../img/personal/zhidetui_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-member { width: .6rem; height: .6rem; background: url("../../img/personal/wodehuiyuan_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-cmishop { width: .6rem; height: .6rem; background: url("../../img/personal/Cmishangcheng_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-month { width: .6rem; height: .6rem; background: url("../../img/personal/wodeyueka_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-upgrade { width: .6rem; height: .6rem; background: url("../../img/personal/huiyuanshenji_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-discounts { width: .6rem; height: .6rem; background: url("../../img/personal/youhuiquan_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-activity { width: .6rem; height: .6rem; background: url("../../img/personal/jingcaihuodong_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-code { width: .6rem; height: .6rem; background: url("../../img/personal/erweima_grzx_‭icon@2x.png");background-size: 100% 100% }
+.icon-control { width: .6rem; height: .6rem; background: url("../../img/personal/kongzhiqi_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-service { width: .6rem; height: .6rem; background: url("../../img/personal/kefu_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-after { width: .6rem; height: .6rem; background: url("../../img/personal/shouhou_grzx_icon@2x.png");background-size: 100% 100% }
+.icon-vip { width: .32rem; height: .32rem; background: url("../../img/personal/pthy_grzx_icon@3x.png");background-size: 100% 100% }
+.icon-gift { width: .5rem; height: .5rem; background: url("../../img/personal/qiandao_grzx_icon@3x.png");background-size: 100% 100% }
+.icon-money { width: .6rem; height: .6rem; background: url("../../img/personal/qianbao_grzx_icon@3x.png");background-size: 100% 100% }
+

@@ -1,0 +1,39 @@
+header{background: url("../../img/cmi/header.png");background-size: 100% 100%}
+.header-div .icon-tan{background: url("../../img/cmi/tan.png");background-size: 100% 100%;width: .41rem;height: .4rem;
+display: block;margin-right: .35rem;margin-top: .2rem;float: right}
+.cmi-header-modules{height: 4.44rem;position: relative;z-index: 0;background: url("../../img/cmi/header-top.png");
+  background-size: 100% 100%;position: relative}
+.bbc-index{background-color: #F2F2F2}
+.sign-modules{position: absolute;left: 0;right: 0;margin: auto;width: 1.9rem;height: 1.9rem;background-color: rgba(255,184,199,.8);
+  border-radius: 50%;z-index: 1;top: .57rem}
+.sign-in-button{position: absolute;left: 0;right: 0;margin: auto;width: 1.7rem;height: 1.7rem;background-color: white;
+border-radius: 50%;z-index: 2;top: 0;bottom: 0}
+.sign-in-button img{width: .45rem;display: block;margin: auto;margin-top: 0}
+.sign-in-button p{margin-top: .13rem;color: #F63B75;font-size: .3rem;font-weight:500}
+.datetime-modules{width: 6.86rem;height: 1.6rem;background-color: white;border-radius: 10px;position: relative;margin: auto;
+margin-top: -1.5rem}
+.datetime-modules li{width: calc(100% / 7);float: left;margin-top: .35rem;position: relative}
+.datetime-radius{width: .52rem;height: .52rem;border-radius: 50%;text-align: center;position: relative;line-height: .52rem;
+  margin: auto;font-size: .22rem;border: 1px solid #CFCFCF;color: #CFCFCF}
+.datetime-modules li p{text-align: center;font-size: .24rem;margin-top: .12rem}
+.datetime-modules li .active .datetime-radius{background-color: #F63B75;border: 1px solid #F63B75;color: white}
+.datetime-modules li .active.ago .datetime-radius{opacity: .3}
+.datetime-modules li .active:after{background: url("../../img/cmi/checkin.png");background-size: 100% 100%;width: .2rem;height: .2rem;
+content: "";display: block;position: absolute;right: .2rem;top: .35rem}
+.cmi-common-modules{width: 6.86rem;margin: auto;background: white;border-radius: 10px;}
+.cmi-common-modules .cmi-common-title{color: #333333;font-size: .32rem;padding: .25rem 0;width: calc(100% - .6rem);
+  border-bottom: 1px solid #E5E5E5;margin: 0 .3rem;padding-left: .2rem;position: relative}
+.cmi-common-modules .cmi-common-title:after{display: block;content: "";background-color: #30DB8E;width: .1rem;height: .1rem;
+border-radius: 50%;left: 0;position: absolute;top: 0;bottom: 0;margin: auto}
+.cmi-common-modules ul li{float: left;width: calc(100% /4);text-align: center;padding-bottom: .43rem;margin-top: .28rem}
+.cmi-common-modules ul li img{width: .65rem;height: .65rem;display: block;margin: auto}
+.cmi-common-modules ul li p{text-align: center;color: #666666;font-size: .24rem;margin-top: .21rem}
+.cmi-common-modules{margin-top: .28rem}
+.cmi-common-modules .cmi-common-title.red:after{display: block;content: "";background-color: #FF6060;width: .1rem;height: .1rem;
+  border-radius: 50%;left: 0;position: absolute;top: 0;bottom: 0;margin: auto}
+.cmi-header-modules .left{position: absolute;left: .3rem;top: .5rem;font-size: .28rem;color: white}
+.cmi-header-modules .right{position: absolute;right: .3rem;top: .5rem;font-size: .3rem;color: white}
+.cmi-header-modules .right img{width: .3rem;float: right;margin-left: .05rem;margin-top: .08rem}
+
+
+.nut-forget a{ display: none!important;}

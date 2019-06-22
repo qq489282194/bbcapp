@@ -1,0 +1,28 @@
+header{background-color: white}
+header span{color: black}
+header .icon-left{background: url("../../img/back.png");background-size: 100% 100%}
+.invite-bg{width: 7.3rem;height: 1.8rem;margin: auto}
+.invite-ul{padding-bottom: .47rem;border-bottom: 10px solid #F2F2F2}
+.invite-ul li{float: left;width: calc(100% / 3);text-align: center;margin-top: .46rem}
+.invite-ul li p:nth-child(1){color: #333333;font-size: .36rem}
+.invite-ul li p:nth-child(2){color: #333333;font-size: .26rem;margin-top: .15rem}
+h5{padding: 0 .34rem;color: #333333;font-size: .32rem;margin: .43rem 0}
+.invite-p{color: #333333;font-size: .28rem;padding: 0 .35rem;margin-bottom: .3rem;text-align: justify}
+.icon-share{float: right;width: .35rem;height: .35rem;display: block;background: url("../../img/cmi/share.png");
+  background-size: 100% 100%;margin-right: .38rem;margin-top: .2rem}
+
+/*分享模块*/
+.footer-share-modules{position: fixed;bottom: 0;width: 100%;height: 4.36rem;background-color: #F6F6F6;z-index: 999}
+.footer-title-modules{height: .8rem;position: relative;margin-top: .2rem}
+.footer-title-modules:after{content: "";height: 1px;background-color: #909090;width: 3.63rem;position: absolute;left: 0;right: 0;;margin: auto;
+  z-index: 9;top: 0;bottom: 0}
+.footer-title-modules p{position: absolute;left: 0;right: 0;margin: auto;width: 2.5rem;z-index: 99;line-height: .8rem;
+  background-color: #F6F6F6;text-align: center;color: #909090;font-size: .32rem}
+.footer-share-modules li{float: left;width: calc(100% / 4);text-align: center;position: relative}
+.footer-share-modules li p{width: 100%;text-align: center;top: .8rem;position: absolute}
+.footer-share-modules li:nth-child(1) img{width: .64rem;display: inline-block}
+.footer-share-modules li:nth-child(2) img{width: .58rem;display: inline-block}
+.footer-share-modules li:nth-child(3) img{width: .52rem;display: inline-block}
+.footer-share-modules li:nth-child(4) img{width: .59rem;display: inline-block}
+.footer-share-modules ul{margin-top: .87rem}
+.share-footer-button{position: absolute;bottom: 0;width: 100%;line-height: .85rem;text-align: center;color: #FC858F;font-size: .3rem;background-color: white;font-weight: bold}
