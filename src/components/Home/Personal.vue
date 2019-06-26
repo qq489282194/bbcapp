@@ -9,11 +9,12 @@
       <div class="header-modules">
         <div class="header">
           <div>
-            <a @click="MIXINToDetail('','7')" :class="this.messageNumber >0 ? 'active' : ''">
+            <a @click="MIXINToDetail('','3')" :class="this.messageNumber >0 ? 'active' : ''">
               <i class="icon icon-message"></i>
             </a>
-            <a @click="MIXINToDetail('','3')">
+            <a @click="MIXINToDetail('','7')">
               <i class="icon icon-set"></i>
+              <p :class="message == 1 ? 'news' : ''"></p>
             </a>
           </div>
         </div>
@@ -22,12 +23,12 @@
           <img @click="MIXINToDetail('','20')" v-else class="header-photo" src="../../assets/img/user.png"/>
           <div @click="MIXINToDetail('','20')" class="header-message">
             <p v-html="userList.niceName">Why.123</p>
-            <p v-show="userId == '' || userId == '(null)'  ">Darren</p>
+            <p v-show="userId == '' || userId == '(null)'  " v-html="postUserByUserid.name">Darren</p>
             <i class="icon icon-vip"></i>
-            <span v-if="userList.role == 1">普通用户</span>
+            <!-- <span v-if="userList.role == 1">普通用户</span>
             <span v-if="userList.role == 2">贵宾</span>
             <span v-if="userList.role == 3">铂金</span>
-            <span v-if="userList.role == 4">店长</span>
+            <span v-if="userList.role == 4">店长</span> -->
             <!-- <div class="progress">
               <span>等级 v3</span>
               <nut-progress 
@@ -41,27 +42,28 @@
             </div> -->
             
           </div>
-          <div class="sign">
+          <div class="sign" @click="MixinToUrl('cmi-index')">
             <p><i class="icon icon-gift"></i></p>
             <p>签到有礼</p>
           </div>
           <!-- <img @click="MIXINToDetail('','10')" class="header-code" src="../../assets/img/cmi/ma.png"/> -->
         </div>
         <ul class="header-bottom clear-both">
-          <li @click="MIXINToDetail(MIXINGETHost()+'bbc-personal/cmi/detail','24')" >
-            <!-- <p v-if="userList.integral > 10000" v-html="userList.integral">1W+</p> -->
-            <p v-html="diaryCount.data">0</p>
+          <li @click="MIXINToDetail('','35')" >
+            <p v-if="diaryCount != 0" v-html="diaryCount">0</p>
+            <p v-if="diaryCount == 0">0</p>
             <p>日记</p></li>
-          <li @click="MIXINToDetail('','12')">
-            <p v-html="personalPage.funs">0</p>
+          <li @click="MIXINToDetail('','36')">
+            <p v-if="personalPage.funs != 0" v-html="personalPage.funs">0</p>
+            <p v-if="personalPage.funs == 0">0</p>
             <p>粉丝</p></li>
-          <li @click="MIXINToDetail('','11')">
-            <p v-if="countCare != 0" v-html="countCare">9814</p>
-            <p v-if="countCare == 0" v-html="countCare">0</p>
-            <p>关注</p></li>
           <li @click="MIXINToDetail('','5')">
+            <p v-if="countCare != 0" v-html="countCare">9814</p>
+            <p v-if="countCare == 0">0</p>
+            <p>关注</p></li>
+          <li @click="MIXINToDetail('','12')">
             <p v-if="selectCount.count != 0"  v-html="selectCount.count">1</p>
-            <p v-if="selectCount.count == 0"  v-html="selectCount.count">0</p>
+            <p v-if="selectCount.count == 0">0</p>
             <p>好友</p></li>
         </ul>
       </div>
@@ -72,27 +74,27 @@
             <i class="icon icon-order"></i>
             <!--<i src="../../assets/img/home/order.png"/>-->
             <p>订单</p></li>
-          <li @click="MIXINToDetail('','30')">
+          <li @click="MIXINToDetail('','8')">
             <i class="icon icon-after-sales"></i>
             <!--<img src="../../assets/img/home/after-sales.png"/>-->
             <p>预约</p></li>
-          <li @click="MIXINToDetail('','13')">
+          <li @click="MixinToUrl('cmi-wallet')">
             <i class="icon icon-money"></i>
             <!--<img src="../../assets/img/home/integral.png"/>-->
             <p>钱包</p></li>
-          <li @click="MIXINToDetail('','4')">
+          <li @click="MIXINToDetail('','11')">
             <i class="icon icon-information"></i>
             <!--<img src="../../assets/img/home/question.png"/>-->
             <p>收藏</p></li>
-          <li @click="MIXINToDetail('','15')">
+          <li @click="MIXINToDetail('','37')">
             <i class="icon icon-praise"></i>
             <!--<img src="../../assets/img/home/information.png"/>-->
             <p>赞过</p></li>
-          <li @click="MIXINToDetail('','15')">
+          <li @click="MIXINToDetail('','4')">
             <i class="icon icon-answers"></i>
             <!--<img src="../../assets/img/home/information.png"/>-->
             <p style="margin-bottom:0;">问答</p></li>
-          <li @click="MIXINToDetail('','15')">
+          <li @click="MIXINToDetail('','38')">
             <i class="icon icon-footprint"></i>
             <!--<img src="../../assets/img/home/information.png"/>-->
             <p style="margin-bottom:0;">足迹</p></li>
@@ -102,12 +104,12 @@
       </div>
       
       <div class="banner-modules">
-        <img :src="pageJumpimg" alt="">
+        <a :href="page_jump_url"><img :src="photo_url" alt=""></a>
       </div>
 
       <div class="integral-modules frame">
-        <p @click="MixinToUrl('cmi-wallet','integral')">我的积分</p>
-        <ul class="numdata">
+        <p>我的积分</p>
+        <!-- <ul class="numdata">
           <li>
             <p>可用积分</p>
             <p v-if="postUserByUserid.actAalance != 0" v-html="postUserByUserid.actAalance">0.00</p>
@@ -118,13 +120,17 @@
             <p v-if="postUserByUserid.actAalance != 0" v-html="postUserByUserid.actAalance + postUserByUserid.frozonaalance">0.00</p>
             <p v-if="postUserByUserid.actAalance == 0">0.00</p>
           </li>
-        </ul>
+        </ul> -->
         <ul class="invite">
-          <li>
+          <li @click="MixinToUrl('cmi-wallet','integral')">
+            <i class="icon icon-integral"></i>
+            <p>积分</p>
+          </li>
+          <li @click="MIXINToDetail('','39')">
             <i class="icon icon-invite"></i>
             <p>邀请</p>
           </li>
-          <li>
+          <li @click="MIXINToDetail('','40')">
             <i class="icon icon-deserve"></i>
             <p>值得推</p>
           </li>
@@ -134,26 +140,26 @@
 
       <div class="integral-modules frame">
         <p>会员权益</p>
-        <ul class="numdata">
+        <!-- <ul class="numdata">
           <li>
             <p>为您节省</p>
             <p><span>￥</span>120</p>
           </li>
-        </ul>
+        </ul> -->
         <ul class="member nav">
-          <li>
+          <li @click="MIXINToDetail('','41')">
             <i class="icon icon-member"></i>
             <p>我的会员</p>
           </li>
-          <li>
+          <li @click="MIXINToDetail('','18')">
             <i class="icon icon-cmishop"></i>
             <p>C米商城</p>
           </li>
-          <li>
+          <li @click="MIXINToDetail('','19')">
             <i class="icon icon-month"></i>
             <p>我的月卡</p>
           </li>
-          <li>
+          <li @click="MIXINToDetail('','42')">
             <i class="icon icon-upgrade"></i>
             <p>会员升级</p>
           </li>
@@ -167,13 +173,13 @@
         <ul class="serve-modules clear-both">
           <!--<li @click="MixinToUrl('cmi-index')">-->
           <!--<li @click="MIXINToDetail('http://129.204.30.206:8011/bbc-personal/cmi/index','24')">-->
-          <li @click="MIXINToDetail(MIXINGETHost()+'bbc-personal/cmi/index','24')">
+          <li @click="MIXINToDetail('','43')">
             <!--<img style="width: .44rem" src="../ ../assets/img/home/check.png"/>-->
             <i class="icon icon-discounts"></i>
             <p>优惠券</p>
           </li>
           <!--<li @click="MIXINToDetail('http://129.204.30.206:8011/bbc-personal/cmi/index','24')"><img style="width: .44rem" src="../../assets/img/home/check.png"/><p>签到领好礼</p></li>-->
-          <li @click="MIXINToDetail('','17')">
+          <li @click="MIXINToDetail('','24')">
             <i class="icon icon-activity"></i>
             <!--<img style="width: .42rem" src="../../assets/img/home/gift.png"/>-->
             <p>精彩活动</p></li>
@@ -184,26 +190,18 @@
         <p class="home-title">常用工具</p>
 
         <ul class="serve-modules clear-both">
-          <!--<li @click="MixinToUrl('cmi-index')">-->
-          <!--<li @click="MIXINToDetail('http://129.204.30.206:8011/bbc-personal/cmi/index','24')">-->
-          <li @click="MIXINToDetail(MIXINGETHost()+'bbc-personal/cmi/index','24')">
-            <!--<img style="width: .44rem" src="../ ../assets/img/home/check.png"/>-->
+          <li @click="MIXINToDetail('','10')">
             <i class="icon icon-code"></i>
             <p>二维码</p>
           </li>
-          <!--<li @click="MIXINToDetail('http://129.204.30.206:8011/bbc-personal/cmi/index','24')"><img style="width: .44rem" src="../../assets/img/home/check.png"/><p>签到领好礼</p></li>-->
-          <li @click="MIXINToDetail('','17')">
+          <li @click="MIXINToDetail('','44')">
             <i class="icon icon-control"></i>
-            <!--<img style="width: .42rem" src="../../assets/img/home/gift.png"/>-->
             <p>胸膜控制器</p></li>
-          <li @click="MIXINToDetail('http://activity.meibbc.com/team-packer/activityCenter.html#/index?isTop=2','24')">
+          <li @click="MIXINToDetail('','9')">
             <i class="icon icon-service"></i>
-            <!--<img style="width: .49rem" src="../../assets/img/home/horn.png"/>-->
             <p>客服</p></li>
-          <!--<li><img style="width: .35rem" src="../../assets/img/home/bag.png"/><p>C米换礼</p></li>-->
-          <li @click="MIXINToDetail('','19')">
+          <li @click="MIXINToDetail('','6')">
             <i class="icon icon-after"></i>
-            <!--<img style="width: .49rem" src="../../assets/img/home/card.png"/>-->
             <p>售后</p></li>
         </ul>
       </div>
@@ -218,7 +216,7 @@
   import * as USER_API from '@/api/user'
   import * as TAPP_API from '@/api/tapp'
   import store from "@/store/index"
-import { debug } from 'util';
+  import { debug } from 'util';
 
   export default {
     name: "personal",
@@ -236,9 +234,7 @@ import { debug } from 'util';
           funs:0
         },
         // 日记
-        diaryCount:{
-          data:0
-        },
+        diaryCount:0,
         // 积分
         postUserByUserid:{
           // 可用积分
@@ -256,7 +252,14 @@ import { debug } from 'util';
           // 跳转地址
           page_jump_url:''
         }],
-        pageJumpimg:'',
+        // 跳转地址
+        page_jump_url:'',
+        // 图片地址
+        photo_url:'',
+        // 未读消息显隐
+        message:0,
+        // 未读消息
+        UnReadData:{},
         messageNumber:0,
       }
     },
@@ -318,6 +321,8 @@ import { debug } from 'util';
       this.loadPersonalPage()
       // 日记
       this.loadDiaryCount()
+      //未读消息
+      this.loadUnReadData()
     },
     methods:{
       loadMessage(){
@@ -354,27 +359,17 @@ import { debug } from 'util';
       loadSelectCount(){
         let params = {"endDate":"", "startDate":"", "userId":this.userId,};
         USER_API.selectcount(params).then(data => {
-          // if(data){
-          //   if(data == true){
-          //     this.selectCount = 0;
-          //   }else{
-          //     this.selectCount = data;
-          //   }
-          // }
-          this.selectCount = data.data;
+          if(data){
+            this.selectCount = data;
+          }
         });
       },
       // 粉丝
       loadPersonalPage(){
-        let params = {"token":this.token, "userId":this.userId, "lookUserId":"",};
+        let params = {"userId":this.userId, "lookUserId":this.userId,};
         USER_API.personalPage(params).then(data => {
-          // debugger
           if(data){
-            if(data == true){
-              this.personalPage = 0;
-            }else{
-              this.personalPage = data;
-            }
+              this.personalPage = data.data
           }
         });
       },
@@ -384,20 +379,16 @@ import { debug } from 'util';
         USER_API.countCare(params).then(data => {
           if(data){
             this.countCare = data;
-          }else{
-            this.countCare = 0;
           }
         });
       },
       // 日记
       loadDiaryCount(){
-        let params = {"token":this.token, "userId":this.userId,};
+        let params = {"userId":this.userId,};
         USER_API.diaryCount(params).then(data => {
           // debugger
           if(data){
             this.diaryCount = data;
-          }else{
-            this.diaryCount = 0;
           }
         });
       },
@@ -405,21 +396,30 @@ import { debug } from 'util';
       loadPostUserByUserid(){
         let params = {"token":this.token, "userid":this.userId,};
         USER_API.postUserByUserid(params).then(data => {
-          debugger
+          
           if(data){
-            this.postUserByUserid = data.data;
-          }else{
-            this.postUserByUserid = 0;
+            this.postUserByUserid = data;
           }
+          // debugger
         });
       },
       // banner图
       loadPageJump(){
         let params = { type:6, page_no:1, page_size:10, };
         USER_API.pageJump(params).then(data => {
-          // debugger
-          this.pageJump = data.data
-          // this.pageJumpimg = data.data[0].photo_url
+          this.pageJump = data
+          this.page_jump_url = data[0].page_jump_url
+          this.photo_url = data[0].photo_url
+        })
+      },
+      // 未读消息
+      loadUnReadData(){
+        let params = { "receiver":this.userId, };
+        USER_API.UnReadData(params).then(data => {
+          this.UnReadData = data
+          if(data.focusNotify > 0 || data.notification > 0 || data.clicklikeNotify > 0 || data.commentNotify > 0 ){
+            this.message = 1
+          }
         })
       },
     },

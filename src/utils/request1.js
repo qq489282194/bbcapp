@@ -2,8 +2,8 @@ import Vue from 'vue'
 import axios from "axios"
 
 const service = axios.create({
-  baseURL:  "/bbc/",
-  // baseURL:  "http://192.168.0.41:8081/dev/",
+  baseURL:  "/bbc-information",
+  // baseURL:  "http://nfz.meibbc.com/bbc-information",
   timeout: 15000,
 })
 

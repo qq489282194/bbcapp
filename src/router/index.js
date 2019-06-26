@@ -15,6 +15,8 @@ import CmiGive from '@/components/Cmi/Give'
 import CmiGiveSuccess from '@/components/Cmi/GiveSuccess'
 import CmiGiveDetail from '@/components/Cmi/GiveDetail'
 import CmiWallet from '@/components/Cmi/Wallet'
+import FindOffline from '@/components/Find/Offline'
+import BBCDetail from '@/components/BBCclassify/BBCDetail'
 
 Vue.use(Router)
 
@@ -28,7 +30,7 @@ export default new Router({
       component:Index,
       redirect: '/personal',
       children:[
-        // {path: 'home', name: 'home', component:HomeIndex,},
+        {path: 'home', name: 'home', component:HomeIndex,},
         {path: 'personal', name: 'personal', component:HomePersonal,},
         {path: 'cmi', name: 'cmi', component:Cmi,children:[
           {path: 'index', name: 'cmi-index', component:CmiIndex,},
@@ -42,7 +44,9 @@ export default new Router({
           {path: 'giveSuccess', name: 'cmi-give-success', component:CmiGiveSuccess,},
           {path: 'giveDetail', name: 'cmi-give-detail', component:CmiGiveDetail,},
           {path: 'wallet', name: 'cmi-wallet', component:CmiWallet,},
-        ]}
+        ]},
+        {path: 'offline', name: 'find-offline', component:FindOffline},
+        {path: 'bbcdetail', name: 'bbc-detail', component:BBCDetail},
       ]
     }
   ]

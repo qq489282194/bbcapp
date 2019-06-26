@@ -2,7 +2,8 @@ import Vue from 'vue'
 import axios from "axios"
 
 const service = axios.create({
-  baseURL:  "/bbc-tapp/",
+  baseURL:  "/meibbcapp",
+  // baseURL:  "http://192.168.0.106:8989",
   timeout: 15000,
 })
 

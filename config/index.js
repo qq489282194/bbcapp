@@ -16,25 +16,46 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/bbc':{
+      // '/bbc':{
+      //   target:'http://user.meibbc.com/',
+      //   // target:'http://testuser.meibbc.com/dev/',
+      //   // target:'http://192.168.0.41:8081/dev/',
+      //   // test 以下
+      //   // target:'http://120.79.144.227:8081/dev/',
+      //   changeOrigin:true,
+      //   pathRewrite:{
+      //     '^/bbc': ''
+      //   }
+      // },
+      '/bbc-information':{
         // target:'http://user.meibbc.com/',
         // target:'http://testuser.meibbc.com/dev/',
         // target:'http://192.168.0.41:8081/dev/',
-        target:'http://192.168.0.225:7002',
         // test 以下
-        // target:'http://120.79.144.227:8081/dev/',
+        target:'http://nfz.meibbc.com',
         changeOrigin:true,
         pathRewrite:{
-          '^/bbc': ''
+          '^/bbc-information': '/bbc-information'
         }
       },
-      '/bbc-tapp':{
+      '/meibbcapp':{
         // 以下test
         // target:'http://tapp.meibbc.com/',
-        target:'http://appmini.meibbc.com/',
+        // target:'http://appmini.meibbc.com/',
+        target:'http://tapp.meibbc.com/',
         changeOrigin:true,
         pathRewrite:{
-          '^/bbc-tapp':''
+          '^/meibbcapp':''
+        }
+      },
+      '/message':{
+        // 以下test
+        // target:'http://tapp.meibbc.com/',
+        // target:'http://appmini.meibbc.com/',
+        target:'http://39.108.143.243:8787',
+        changeOrigin:true,
+        pathRewrite:{
+          '^/message':''
         }
       },
       '/cmi-other':{
@@ -51,7 +72,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: '192.168.0.55', // can be overwritten by process.env.HOST
-    port: 7002, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,

@@ -1,4 +1,8 @@
 import request from "../utils/request"
+import request1 from "../utils/request1"
+import request2 from "../utils/request2"
+import request4 from "../utils/request4"
+import request5 from "../utils/request5"
 import qs from "qs";
 
 export function findUserByUserid(params) {
@@ -18,18 +22,28 @@ export function findUserByUserid(params) {
     })
   }
 
+  // 未读消息
+  export function UnReadData(params) {
+    return request5({
+      url:"/message/messagecenter/controller/UnReadData",
+      method:"post",
+      params
+    })
+  }
+
   // 好友
 export function selectcount(params) {
   return request({
     url:"personal/saleorg/selectcount",
     method:"post",
-    params
+    headers: { 'Content-Type': 'application/json' },
+    data:params
   })
 }
 
 // banner图
 export function pageJump(params) {
-  return request({
+  return request4({
     url:"/pageJump",
     method:"get",
     params
@@ -47,18 +61,20 @@ export function countCollect(params) {
 
   // 日记
 export function diaryCount(params) {
-  return request({
+  return request2({
     url:"/meibbcapp/community/diary/diaryCount",
     method:"get",
+    headers: { 'Content-Type': 'application/json' },
     params
   })
 }
 
   // 粉丝
 export function personalPage(params) {
-  return request({
-    url:"personal/personalPage",
+  return request1({
+    url:"/information/personal/personalPage",
     method:"get",
+    headers: { 'Content-Type': 'application/json' },
     params
   })
 }
@@ -71,6 +87,15 @@ export function countCare(params) {
     params
   })
 }
+
+  // 获取首页文章
+  export function getArticle(params) {
+    return request2({
+      url:"/bbc-information/type-article/get-article",
+      method:"get",
+      params
+    })
+  }
 
 export function isSigned(params) {
   return request({
@@ -103,13 +128,22 @@ export function updateCmTaskLog(params) {
   })
 }
 
+// 钱包 C米明细
 export function findIntegralList(params) {
   return request({
-    url:"api/v1/integralList/findIntegralList",
+    url:"/api/v1/integralList/findIntegralList",
     method:"post",
-    data:qs.stringify(params)
+    params
   })
 }
+
+// export function findIntegralList(params) {
+//   return request({
+//     url:"api/v1/integralList/findIntegralList",
+//     method:"post",
+//     data:qs.stringify(params)
+//   })
+// }
 
 export function queryCmShare(params) {
   return request({

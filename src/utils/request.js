@@ -4,12 +4,13 @@ import store from "@/store/index"
 // import $ from "jquery";
 
 const service = axios.create({
-  baseURL:  '/bbc/',
-  // baseURL:  "http://testuser.meibbc.com/dev",
+  // baseURL:  '/bbc/',
+  baseURL:  "http://testuser.meibbc.com/dev",
   timeout: 15000,
 })
 
 axios.defaults.withCredentials = false;
+axios.defaults.headers.post["Content-type"]="application/json";
 
 // 添加请求拦截器
 service.interceptors.request.use(function (config) {

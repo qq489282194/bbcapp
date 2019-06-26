@@ -2,8 +2,8 @@ import Vue from 'vue'
 import axios from "axios"
 
 const service = axios.create({
-  baseURL:  "/cmi-other/",
-  // baseURL:  "http://192.168.0.225:7002",
+  // baseURL:  "/cmi-other/",
+  baseURL:  "http://192.168.0.225:7002",
   timeout: 15000,
 })
 

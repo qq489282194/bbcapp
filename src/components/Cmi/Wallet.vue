@@ -22,26 +22,37 @@
                 <li><p :class="style == 1 ? 'active' : ''" @click="option('integral')">我的积分</p></li>
             </ul>
             <div class="mycmi"  v-if="style == 0">
-                <p>5869</p>
+                <!-- <p>5869</p> -->
+                <p v-if="postUserByUserid.integral != 0" v-html="postUserByUserid.integral">0.00</p>
+                <p v-if="postUserByUserid.integral == 0">0.00</p>
                 <span>可用C米</span>
-                <div class="signcmi">
+                <div class="signcmi" @click="MixinToUrl('cmi-index')">
                     <i class="icon-signcmi"></i>
                     <p>签到领C米</p>
                 </div>
                 </div>
             <div class="myintegral" v-else>
-                <div><p class="fz30">1,300.12</p><p>可用积分</p></div>
+                <div>
+                    <!-- <p class="fz30" v-html="postUserByUserid.actAalance">1,300.12</p> -->
+                    <p class="fz30" v-if="postUserByUserid.actAalance != 0" v-html="postUserByUserid.actAalance">0.00</p>
+                    <p class="fz30" v-if="postUserByUserid.actAalance == 0">0.00</p>
+                    <p>可用积分</p>
+                </div>
                 <ul class="integral-detail">
                     <li>
-                        <p class="fz23">5,000.12</p>
+                        <!-- <p class="fz23">5,000.12</p> -->
+                        <p class="fz23" v-if="postUserByUserid.frozonaalance != 0" v-html="postUserByUserid.frozonaalance">0.00</p>
+                        <p class="fz23" v-if="postUserByUserid.frozonaalance == 0">0.00</p>
                         <p>获得积分</p>
                     </li>
                     <li>
-                        <p class="fz23">6,300.00</p>
+                        <!-- <p class="fz23" v-html="postUserByUserid.actAalance + postUserByUserid.frozonaalance">6,300.00</p> -->
+                        <p class="fz23" v-if="postUserByUserid.actAalance != 0" v-html="postUserByUserid.actAalance + postUserByUserid.frozonaalance">0.00</p>
+                        <p class="fz23" v-if="postUserByUserid.actAalance + postUserByUserid.frozonaalance == 0">0.00</p>
                         <p>总积分</p>
                     </li>
                 </ul>
-                <div class="signcmi">
+                <div class="signcmi" @click="MIXINToDetail('','48')">
                     <i class="icon-integral"></i>
                     <p>积分兑换</p>
                 </div>
@@ -50,18 +61,19 @@
         <p style="height:.01rem;"></p>
     </header>
     
+    <div class="shade" v-if="alltimeShow" @click="timeShow"></div>
 
     <div class="integral-bottom" v-if="style == 1">
         <ul class="integral">
-            <li>
+            <li @click="MIXINToDetail('','45')">
                 <p>积分明细</p>
                 <i class="icon-right"></i>
             </li>
-            <li>
+            <li @click="MIXINToDetail('','46')">
                 <p>银行卡</p>
                 <i class="icon-right"></i>
             </li>
-            <li>
+            <li @click="MIXINToDetail('','47')">
                 <p>积分领取</p>
                 <i class="icon-right"></i>
             </li>
@@ -69,7 +81,7 @@
 
         <!-- <button>积分兑换</button> -->
     </div>
-
+    
     <div class="cmi-bottom" v-else-if="style == 0">
         <div class="make">
             <ul class="make-one">
@@ -77,15 +89,15 @@
                     <i class="icon-mark"></i>
                     <p>赚C米</p>
                 </li>
-                <li>
+                <li @click="MixinToUrl('cmi-invite')">
                     <i class="icon-invite"></i>
                     <p>邀请好友</p>
                 </li>
-                <li>
+                <li @click="MixinToUrl('cmi-mission')">
                     <i class="icon-gaincmi"></i>
                     <p>每日赚C米</p>
                 </li>
-                <li>
+                <li @click="MIXINToDetail('','23')">
                     <i class="icon-givecmi"></i>
                     <p>购物送C米</p>
                 </li>
@@ -95,7 +107,7 @@
                     <i class="icon-mark"></i>
                     <p>花C米</p>
                 </li>
-                <li>
+                <li @click="MixinToUrl('cmi-ticket')">
                     <i class="icon-trade"></i>
                     <p>换好礼</p>
                 </li>
@@ -103,7 +115,7 @@
                     <i class="icon-award"></i>
                     <p>抽大奖</p>
                 </li>
-                <li>
+                <li @click="MIXINToDetail('','18')">
                     <i class="icon-cmimoney"></i>
                     <p>C米当钱用</p>
                 </li>
@@ -113,12 +125,12 @@
         <p style="height:.16rem;background:#f2f2f2;"></p>
         <div class="cmi-title">
             <p>C米明细</p>
-            <div class="month">
-                <span>本月</span>
-                <i class="icon-oar"></i>
+            <div class="month" @click="timeShow">
+                <span>{{ month }}</span>
+                <i :class="alltimeShow == false ? 'icon-oar' : 'icon-oar-against'"></i>
             </div>
-            <div class="alltime" v-for="(item,index) in alltime" :key="index">
-                <p>{{item.label}}</p>
+            <div class="alltime" v-if="alltimeShow">
+                <p :class="{'alltime-color':activeId==index}" v-for="(item,index) in alltime" :key="index" @click="switchtime(item,index)">{{item.label}}</p>
                 <!-- <p>全部</p>
                 <p>一周</p>
                 <p>本月</p>
@@ -129,16 +141,16 @@
         </div>
         <div class="cmi-record">
             <ul>
-                <li>
+                <li v-for="item in findIntegralList" :key="item.index">
                     <div>
-                        <p>签到奖励</p>
+                        <p v-html="item.remarks">签到奖励</p>
                     </div>
                     <div class="addnum">
-                        <p>2019-05-26 10:20:25</p>
-                        <p>+5</p>
+                        <p v-html="item.getintegraltime">2019-05-26 10:20:25</p>
+                        <p>+{{item.integral}}</p>
                     </div>
                 </li>
-                <li>
+                <!-- <li>
                     <div>
                         <p>购物奖励</p>
                     </div>
@@ -153,7 +165,7 @@
                     </div>
                     <div class="addnum">
                         <p>2019-05-26 10:20:25</p>
-                        <p>+256</p>
+                        <p style="color:#48B1E8">+256</p>
                     </div>
                 </li>
                 <li>
@@ -164,7 +176,7 @@
                         <p>2019-05-26 10:20:25</p>
                         <p>+50</p>
                     </div>
-                </li>
+                </li> -->
             </ul>
         </div>
     </div>
@@ -192,12 +204,33 @@
         },
         alltime:[
             {value:0,label:'全部'},
-            {value:1,label:'一周'},
-            {value:2,label:'半月'},
-            {value:3,label:'三月'},
-            {value:4,label:'半年'},
-            {value:5,label:'一年'},
-        ]
+            {value:7,label:'一周'},
+            {value:15,label:'半月'},
+            {value:93,label:'三月'},
+            {value:183,label:'半年'},
+            {value:365,label:'一年'},
+        ],
+        month:'全部',
+        alltimeShow:false,
+        activeId:0,
+        // 积分
+        postUserByUserid:{
+          // 可用积分
+          actAalance:0,
+          // 冻结积分
+          frozonaalance:0
+        },
+        //C米明细
+        findIntegralList:[],
+        // C米筛选
+        searchForm:{
+          userId:store.state.userId,
+          // userId:'fff04119e87d40ef8297bb715649bd86',
+          startTime:this.MIXINYearMonthDate(-31),
+          endTime:this.MIXINYearMonthDate(0),
+          pagesize:200,
+          page:1,
+        },
       }
     },
     mounted(){
@@ -207,6 +240,10 @@
       }else{
           this.style = 0
       }
+      this.loadPostUserByUserid()
+      // C米明细
+    //   this.loadFindIntegralList()
+      this.changTime(this.activeId)
     },
     methods:{
       loadCmi(){
@@ -224,6 +261,7 @@
         let activityId = "";
         this._system_shareTo(title,description,imgSrc,hostUrl,"",activityId,type);
       },
+      // 积分C米切换
       option(val){
         if(val == 'cmi'){
             this.style = 0
@@ -231,12 +269,58 @@
             this.style = 1
         }
       },
+      // 时间切换
+      switchtime(item,index){
+        this.changTime(item.value,item.label)
+        this.month = item.label
+        this.activeId = index
+        this.timeShow()
+      },
+      // 时间显示
+      timeShow(){
+        if(this.alltimeShow){
+            this.alltimeShow = false
+        }else{
+            this.alltimeShow = true
+        }
+      },
+      // 我的积分
+      loadPostUserByUserid(){
+        let params = { "token":this.token, "userid":this.userId, };
+        USER_API.postUserByUserid(params).then(data => {
+          
+          if(data){
+            this.postUserByUserid = data;
+          }
+        });
+      },
+      // C米明细
+      loadFindIntegralList(){
+        USER_API.findIntegralList(this.searchForm).then(data => {
+          if(data){
+            this.findIntegralList = data.data
+          }
+        });
+      },
+      // C米筛选
+      changTime(active,text){
+        this.activeText = text
+        this.active = active;
+        if(active == 0){
+          this.searchForm.startTime = "";
+          this.searchForm.endTime = "";
+        }else{
+          this.searchForm.endTime = this.MIXINYearMonthDate(0);
+          this.searchForm.startTime = this.MIXINYearMonthDate(-active);
+        }
+        this.loadFindIntegralList();
+      },
     },
   }
 </script>
 
 <style scoped>
-  .body{background: #f2f2f2}
+  .body{background: #f2f2f2;padding-top: .6rem;}
   header{background: linear-gradient(#F63B75,#FFEDF3);position: relative;}
   .headerback{height: 2.72rem;width: 100%;position: absolute;top: .13rem;z-index: -1;}
   .header-div{height: .36rem;line-height: .36rem;}
@@ -268,9 +352,9 @@
   .option .myintegral{clear: both;text-align: center;padding: 0;font-size: 0.26rem;padding-bottom: 1.8rem;height: 3.34rem;width: 7.02rem;background: white;margin-left: .24rem;margin-bottom: .26rem;border-radius: .2rem;color: #999999;position: relative;}
   .option .myintegral .signcmi{width: 1.68rem;}
   .option .myintegral .signcmi p{right: .18rem;left: .54rem;}
-  .option .integral-detail{margin-left: .92rem;}
-  .option .integral-detail li{float: left;}
-  .option .integral-detail li:nth-child(1){margin-right: 1.54rem;}
+  /* .option .integral-detail{margin-left: .92rem;} */
+  .option .integral-detail li{float: left; width: calc(100% / 2);}
+  /* .option .integral-detail li:nth-child(1){margin-right: 1.54rem;} */
   /* .option .integral-detail li p:nth-child(1){font-size: 0.46rem;} */
 
   /* 积分明细 */
@@ -286,30 +370,33 @@
   .cmi-bottom .make{padding-bottom: .32rem;}
   .cmi-bottom .make p{margin-top: .1rem;color: #333333;}
   .cmi-bottom .make ul li{float: left;text-align: center;width: calc(90% / 4);margin-top: .32rem;}
-  .cmi-bottom .make .make-title{margin-top: .6rem;margin-left: .4rem;font-size: .32rem;}
+  .cmi-bottom .make .make-title{margin-top: .6rem;margin-left: .3rem;font-size: .32rem;}
   .cmi-bottom .make .make-title P{display: inline-block}
-  .cmi-bottom .cmi-title{position: relative;;height: 1rem;line-height: 1rem;margin-left:.24rem;border-bottom: .01rem solid #e5e5e5;color: #333333;}
+  .cmi-bottom .cmi-title{position: relative;;height: 1rem;line-height: 1rem;margin:0 .24rem;border-bottom: .01rem solid #e5e5e5;color: #333333;}
   .cmi-bottom .cmi-title>p{font-size: .34rem;font-weight: bold;}
-  .cmi-bottom .cmi-title .month{position: absolute;border-radius: .3rem;border: 1px solid #999999;right: .24rem;top: .25rem;height: .48rem;padding: 0 .3rem;line-height: .48rem;font-size: .26rem;color: #999999;padding-right: .4rem;}
-  .cmi-bottom .cmi-title .alltime{width: 1.18rem;border: 0.01rem solid #999999;border-radius: .24rem;padding: 0 .34rem;color: #999999;position: absolute;top: .78rem;right:.28rem;background: white;z-index: 1;padding-bottom: .38rem;}
+  .cmi-bottom .cmi-title .month{position: absolute;border-radius: .3rem;border: 1px solid #999999;right: 0;top: .25rem;height: .48rem;line-height: .48rem;font-size: .26rem;color: #999999;padding-right: .4rem;padding-left: .24rem;}
+  .cmi-bottom .cmi-title .alltime{z-index: 1000;width: 1.18rem;border: 0.01rem solid #999999;border-radius: .24rem;padding: 0 .34rem;color: #999999;position: absolute;top: .78rem;right:0;background: white;padding-bottom: .38rem;}
   .cmi-bottom .cmi-title .alltime p{height: .42rem;}
   .cmi-bottom .cmi-title .alltime p:nth-child(1){margin-top: -.2rem;}
   .cmi-bottom .cmi-record{position: relative;}
-  .cmi-bottom .cmi-record .addnum{float: right;margin-right: .26rem;text-align: right;}
+  .cmi-bottom .cmi-record .addnum{float: right;text-align: right;}
   .cmi-bottom .addnum p{height: .18rem;margin-bottom: .2rem;}
   .cmi-bottom .addnum p:nth-child(1){margin-top: -.2rem;}
   .cmi-bottom .addnum p:nth-child(2){font-size: .32rem;color: #F63B75;font-weight: bold;}
+  .cmi-bottom .addnum .change{color: #48B1E8;}
   .cmi-bottom .cmi-record div:nth-child(1){display: inline-block;font-size: .28rem;color: #333333;}
   .cmi-bottom .cmi-record ul{margin-left: .3rem;}
-  .cmi-bottom .cmi-record ul li{height: 1.08rem;color: #999999;line-height: 1.08rem;border-bottom: .01rem solid #e5e5e5;}
+  .cmi-bottom .cmi-record ul li{height: 1.08rem;color: #999999;line-height: 1.08rem;border-bottom: .01rem solid #e5e5e5;margin-right: .24rem;}
 
     /* 公共样式 */
   .fz30{font-size: 0.60rem;color: #F63B75;font-weight: bold;padding-top: .8rem;}
   .fz23{font-size: 0.46rem;color: #F63B75;}
+  .alltime-color{color: #F63B75;}
   .clear{clear: both;}
-  .icon-right{background: url("../../assets/img/left.png");background-size: 100% 100%;margin-top: .37rem;width: .12rem;height: .22rem;margin-right: .18rem;float: right;}
+  .shade{height: 100%;width: 100%;position: fixed;top: 0;z-index: 999;opacity: 0;}
+  .icon-right{background: url("../../assets/img/wallet/-s-jiantou_qb_icon@3x.png");background-size: 100% 100%;margin-top: .37rem;width: .12rem;height: .22rem;margin-right: .18rem;float: right;}
   .icon-signcmi{ width: .32rem; height: .32rem; background: url("../../assets/img/wallet/qiandao_qb_icon@3x.png");background-size: 100% 100%;display: inline-block;position: absolute;left: .2rem;top: .12rem; }
-  .icon-integral{ width: .38rem; height: .38rem; background: url("../../assets/img/wallet/qiandao_qb_icon@3x.png");background-size: 100% 100%;display: inline-block;position: absolute;left: .1rem;top: .08rem; }
+  .icon-integral{ width: .38rem; height: .38rem; background: url("../../assets/img/wallet/-s-jifenduihuan_qb_icon@3x.png");background-size: 100% 100%;display: inline-block;position: absolute;left: .1rem;top: .08rem; }
   .icon-mark{ width: .18rem; height: .18rem; background: url("../../assets/img/wallet/0_qb_icon@3x.png");background-size: 100% 100%;display: inline-block; }
   .icon-invite{ width: .66rem; height: .66rem; background: url("../../assets/img/wallet/yqhy@3x.png");background-size: 100% 100%;display: inline-block; }
   .icon-gaincmi{ width: .66rem; height: .66rem; background: url("../../assets/img/wallet/mrzcm_qb_icon@3x.png");background-size: 100% 100%;display: inline-block; }
@@ -318,6 +405,7 @@
   .icon-award{ width: .66rem; height: .66rem; background: url("../../assets/img/wallet/cdj_qb_icon@3x.png");background-size: 100% 100%;display: inline-block; }
   .icon-cmimoney{ width: .66rem; height: .66rem; background: url("../../assets/img/wallet/cmdqy_qb_icon@3x.png");background-size: 100% 100%;display: inline-block; }
   .icon-oar{ width: .14rem; height: .08rem; background: url("../../assets/img/wallet/xialajiantou_qb_icon@3x.png");background-size: 100% 100%;display: inline-block;position: absolute;right: .2rem;top: .2rem; }
+  .icon-oar-against{ width: .14rem; height: .08rem; background: url("../../assets/img/wallet/xialajiantou_qb_icon@3x.png");background-size: 100% 100%;display: inline-block;position: absolute;right: .2rem;top: .2rem;transform: rotateX(180deg) }
  
   .active{border-bottom: .06rem solid #910530;padding-bottom: .08rem;color: #910530}
 
